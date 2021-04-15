@@ -37,6 +37,8 @@ export default defineComponent({
           'onReady': onPlayerReady,
         }
       });
+
+      player.setLoop(true);
     };
 
     const onPlayerReady = (event: YT.PlayerEvent) => {
