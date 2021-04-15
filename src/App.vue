@@ -32,7 +32,7 @@
                 <div
                     class="overflow-hidden rounded shadow-lg bg-white ring-1 ring-black ring-opacity-5"
                 >
-                  <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/332469031&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+                  <iframe tabindex="-1" width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/332469031&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
                 </div>
               </PopoverPanel>
             </div>
@@ -85,7 +85,12 @@ export default defineComponent({
 <style>
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
   input[type="range"]::-moz-range-thumb {
-    @apply bg-white h-4 w-4 rounded-full cursor-pointer border-0 shadow-sm m-0;
+    @apply appearance-none bg-white h-4 w-4 rounded-full cursor-pointer border-0 shadow-sm m-0;
+    cursor: pointer;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    @apply appearance-none bg-white h-4 w-4 rounded-full cursor-pointer border-0 shadow-sm m-0;
     cursor: pointer;
   }
 }
