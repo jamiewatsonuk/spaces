@@ -7,38 +7,43 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, watch} from 'vue'
+import {defineComponent, watch, onMounted} from 'vue'
 
 import {state} from "../appState"
+
+declare global {
+  interface Window { onYouTubeIframeAPIReady: any; }
+}
+
+const loadYoutube = () => {
+  const tag = document.createElement('script');
+
+  tag.src = "https://www.youtube.com/iframe_api";
+  const firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode!.insertBefore(tag, firstScriptTag);
+};
 
 export default defineComponent({
   name: 'VideoPlayer',
 
   setup () {
-    const tag = document.createElement('script');
+    onMounted(() => loadYoutube());
 
-    tag.src = "https://www.youtube.com/iframe_api";
-    const firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode!.insertBefore(tag, firstScriptTag);
-
-    let player : YT;
+    let player : YT.Player;
     window.onYouTubeIframeAPIReady = () => {
       player = new YT.Player('player', {
         videoId: state.videoSrc,
-        autoplay: 1,
-        controls: 0,
-        iv_load_policy: 3,
         events: {
           'onReady': onPlayerReady,
         }
       });
     };
 
-    const onPlayerReady = (event: any) => {
+    const onPlayerReady = (event: YT.PlayerEvent) => {
       event.target.playVideo();
     }
 
-    watch(() => state.videoSrc, () => player.loadVideoById(state.videoSrc));
+    watch(() => state.videoSrc, () => player.loadVideoById(state.videoSrc, state.videoStart));
     watch(() => state.volume, () => player.setVolume(state.volume * 100));
   }
 })

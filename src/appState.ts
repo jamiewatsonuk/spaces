@@ -1,12 +1,15 @@
 import {reactive} from "vue";
+import {VideoSource} from "./videos";
 
 const state = reactive({
-    volume: 1,
-    videoSrc: 'Upmka8z9n7E'
+    volume: 0.2,
+    videoSrc: 'mPZkdNFkNps',
+    videoStart: 0
 });
 
-const setVideo = (video: string) => {
-    state.videoSrc = video
+const setVideo = (video: VideoSource) => {
+    state.videoSrc = video[1]
+    state.videoStart = video[2]
 }
 
 export {

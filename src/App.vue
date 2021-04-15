@@ -32,7 +32,7 @@
                 <div
                     class="overflow-hidden rounded shadow-lg bg-white ring-1 ring-black ring-opacity-5"
                 >
-                  <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/332469031&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+                  <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/332469031&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
                 </div>
               </PopoverPanel>
             </div>
@@ -44,7 +44,7 @@
             <svg class="text-white" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" display="block" id="Image"><path d="M2 6a4 4 0 014-4h12a4 4 0 014 4v12a4 4 0 01-4 4H6a4 4 0 01-4-4V6z"/><circle cx="8.5" cy="8.5" r="2.5"/><path d="M14.526 12.621L6 22h12.27A3.73 3.73 0 0022 18.27c0-.466-.175-.915-.49-1.26l-4.03-4.395a2 2 0 00-2.954.006z"/></svg>
           </PopoverButton>
           <PopoverPanel class="ml-16 absolute w-64 bg-gray-800 top-0 p-4 rounded grid grid-cols-3 gap-4">
-            <button v-for="video in videos" @click="setVideo(video[1])" class="p-2 text-2xl rounded bg-gray-700">{{ video[0] }}</button>
+            <button v-for="video in videos" @click="setVideo(video)" class="p-2 text-2xl rounded bg-gray-700">{{ video[0] }}</button>
           </PopoverPanel>
         </Popover>
 
