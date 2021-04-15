@@ -39,6 +39,7 @@ export default defineComponent({
       });
 
       player.setLoop(true);
+      player.setVolume(state.volume * 100)
     };
 
     const onPlayerReady = (event: YT.PlayerEvent) => {
