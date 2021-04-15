@@ -37,13 +37,12 @@ export default defineComponent({
           'onReady': onPlayerReady,
         }
       });
-
-      player.setLoop(true);
-      player.setVolume(state.volume * 100)
     };
 
     const onPlayerReady = (event: YT.PlayerEvent) => {
       event.target.playVideo();
+      player.setLoop(true);
+      player.setVolume(state.volume * 100)
     }
 
     watch(() => state.videoSrc, () => player.loadVideoById(state.videoSrc, state.videoStart));
