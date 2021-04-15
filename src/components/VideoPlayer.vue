@@ -7,24 +7,21 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, computed, watch} from 'vue'
+import {defineComponent, watch} from 'vue'
 
 import {state} from "../appState"
-
-declare var YT: any;
 
 export default defineComponent({
   name: 'VideoPlayer',
 
   setup () {
-    var tag = document.createElement('script');
+    const tag = document.createElement('script');
 
     tag.src = "https://www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
+    const firstScriptTag = document.getElementsByTagName('script')[0];
     firstScriptTag.parentNode!.insertBefore(tag, firstScriptTag);
 
-    let player : any;
-    // @ts-ignore
+    let player : YT;
     window.onYouTubeIframeAPIReady = () => {
       player = new YT.Player('player', {
         videoId: state.videoSrc,
@@ -37,7 +34,7 @@ export default defineComponent({
       });
     };
 
-    function onPlayerReady(event: any) {
+    const onPlayerReady = (event: any) => {
       event.target.playVideo();
     }
 
